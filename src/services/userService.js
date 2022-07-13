@@ -13,6 +13,12 @@ const create = async (displayName, email, password, image) => {
   };
 };
 
+const getAll = async () => {
+  const result = await User.findAll({ attributes: { exclude: 'password' } });
+  return result;
+};
+
 module.exports = {
   create,
+  getAll,
 };

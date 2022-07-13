@@ -1,5 +1,7 @@
 const { validateLogin } = require('./middlewares/loginValidation');
 const { loginAuth } = require('./controllers/loginController');
+const { validateUserCreation } = require('./middlewares/userValidation');
+const User = require('./controllers/userController');
 
 require('dotenv').config();
 const app = require('./api');
@@ -13,5 +15,6 @@ app.get('/', (_request, response) => {
 });
 
 app.post('/login', validateLogin, loginAuth);
+app.post('/user', validateUserCreation, User.create);
 
 app.listen(port, () => console.log('ouvindo porta', port));

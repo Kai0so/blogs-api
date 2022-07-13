@@ -5,6 +5,7 @@ const { validateToken } = require('./middlewares/tokenValidation');
 const { validateCategoryCreation } = require('./middlewares/categoryValidation');
 const User = require('./controllers/userController');
 const Category = require('./controllers/categoryController');
+const Post = require('./controllers/postController');
 
 require('dotenv').config();
 const app = require('./api');
@@ -24,5 +25,6 @@ app.post('/categories', validateToken, validateCategoryCreation, Category.create
 app.get('/user', validateToken, User.getAll);
 app.get('/user/:id', validateToken, User.getById);
 app.get('/categories', validateToken, Category.getAll);
+app.get('/post', validateToken, Post.getAll);
 
 app.listen(port, () => console.log('ouvindo porta', port));

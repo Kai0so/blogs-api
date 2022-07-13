@@ -9,6 +9,17 @@ const getAll = async (_req, res) => {
   }
 };
 
+const getById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Post.getById(id);
+    res.status(200).json(result);
+  } catch (error) {
+    return res.status(error.status).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAll,
+  getById,
 };

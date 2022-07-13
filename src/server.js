@@ -2,7 +2,9 @@ const { validateLogin } = require('./middlewares/loginValidation');
 const { loginAuth } = require('./controllers/loginController');
 const { validateUserCreation } = require('./middlewares/userValidation');
 const { validateToken } = require('./middlewares/tokenValidation');
+const { validateCategoryCreation } = require('./middlewares/categoryValidation');
 const User = require('./controllers/userController');
+const Category = require('./controllers/categoryController');
 
 require('dotenv').config();
 const app = require('./api');
@@ -17,6 +19,7 @@ app.get('/', (_request, response) => {
 
 app.post('/login', validateLogin, loginAuth);
 app.post('/user', validateUserCreation, User.create);
+app.post('/categories', validateToken, validateCategoryCreation, Category.create);
 
 app.get('/user', validateToken, User.getAll);
 app.get('/user/:id', validateToken, User.getById);

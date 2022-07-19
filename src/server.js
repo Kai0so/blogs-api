@@ -1,8 +1,8 @@
-const { validateLogin } = require('./middlewares/loginValidation');
+const { validateLogin } = require('./middlewares/validations/loginValidation');
 const { loginAuth } = require('./controllers/loginController');
-const { validateUserCreation } = require('./middlewares/userValidation');
-const { validateToken } = require('./middlewares/tokenValidation');
-const { validateCategoryCreation } = require('./middlewares/categoryValidation');
+const { validateUserCreation } = require('./middlewares/validations/userValidation');
+const { validateToken } = require('./middlewares/validations/tokenValidation');
+const { validateCategoryCreation } = require('./middlewares/validations/categoryValidation');
 const User = require('./controllers/userController');
 const Category = require('./controllers/categoryController');
 const Post = require('./controllers/postController');
